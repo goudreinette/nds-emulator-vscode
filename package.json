@@ -1,6 +1,10 @@
 {
   "name": "nds-emulator-vscode",
   "displayName": "nds-emulator-vscode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/goudreinette/nds-emulator-vscode"
+  },
   "description": "",
   "version": "0.0.1",
   "engines": {
