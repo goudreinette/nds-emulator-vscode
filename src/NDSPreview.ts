@@ -83,6 +83,11 @@ export class NDSPreview extends Disposable {
         const webview = this.webviewEditor.webview;
         const docPath = webview.asWebviewUri(this.resource);
 
+        const resolveAsUri = (...p: string[]): vscode.Uri => {
+            const uri = vscode.Uri.file(path.join(this.extensionRoot.path, ...p));
+            return webview.asWebviewUri(uri);
+        };
+
         const html = `
             <html>
                 <head>
@@ -91,8 +96,7 @@ export class NDSPreview extends Disposable {
 
                 <body>
                     <desmond-player id="player"></desmond-player>
-                    
-                    <script src="https://cdn.jsdelivr.net/gh/Unzor/desmond/cdn/desmond.min.js"></script>
+                    <script src="${resolveAsUri('lib', 'desmond.min.js')}"></script>
 
                     <script>
                         var player = document.querySelector('desmond-player');
@@ -102,7 +106,6 @@ export class NDSPreview extends Disposable {
                                 // player.enableMicrophone();
                             })
                         });
-                        
 
                         var style = document.createElement('style')
                         style.innerHTML = '#player { display: flex; flex-direction: column; max-width: 600px; width: 100%; grid-gap: 10px}'
