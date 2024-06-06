@@ -95,10 +95,14 @@ export class NDSPreview extends Disposable {
                     <script src="https://cdn.jsdelivr.net/gh/Unzor/desmond/cdn/desmond.min.js"></script>
 
                     <script>
-                        var player = document.getElementById("player");
-                        player.loadURL("${docPath.toString()}", function(){
-                            player.enableMicrophone();
-                        })
+                        var player = document.querySelector('desmond-player');
+
+                        addEventListener('load', () => {
+                            player.loadURL("${docPath.toString()}", function(){
+                                // player.enableMicrophone();
+                            })
+                        });
+                        
 
                         var style = document.createElement('style')
                         style.innerHTML = '#player { display: flex; flex-direction: column; max-width: 600px; width: 100%; grid-gap: 10px}'
