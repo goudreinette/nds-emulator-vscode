@@ -1,6 +1,6 @@
 {
-  "name": "nds-emulatorjs-vscode",
-  "displayName": "nds-emulatorjs-vscode",
+  "name": "nds-emulator-vscode",
+  "displayName": "nds-emulator-vscode",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -14,7 +14,7 @@
   "contributes": {
     "customEditors": [
       {
-        "viewType": "nds-emulatorjs-vscode.preview",
+        "viewType": "nds-emulator-vscode.preview",
         "displayName": "NDS Emulator",
         "selector": [
           {
@@ -22,18 +22,8 @@
           }
         ]
       }
-    ],
-
-    "commands": [
-      {
-        "command": "nds-emulatorjs-vscode.helloWorld",
-        "title": "Hello World"
-      },
-      {
-        "command": "nds-emulatorjs-vscode.openNDSView",
-        "title": "Open NDS View"
-      }
     ]
+    
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import { NDSPreview } from './NDSPreview';
 
 export class NDSCustomProvider implements vscode.CustomReadonlyEditorProvider {
-    public static readonly viewType = 'nds-emulatorjs-vscode.preview';
+    public static readonly viewType = 'nds-emulator-vscode.preview';
 
     private readonly _previews = new Set<NDSPreview>();
     private _activePreview: NDSPreview | undefined;

@@ -1,4 +1,11 @@
-# Welcome to your VS Code Extension
+# NDS emulator for VSCode 
+
+This is a simple NDS emulator for VSCode. Based on [desmond](https://github.com/js-emulators/desmond), a web version of [DeSmuME](http://desmume.org/2022/05/23/desmume-0-9-13-released-2/).
+
+
+
+
+<!-- # Welcome to your VS Code Extension
 
 ## What's in the folder
 
@@ -40,4 +47,4 @@
 * [Follow UX guidelines](https://code.visualstudio.com/api/ux-guidelines/overview) to create extensions that seamlessly integrate with VS Code's native interface and patterns.
 * Reduce the extension size and improve the startup time by [bundling your extension](https://code.visualstudio.com/api/working-with-extensions/bundling-extension).
 * [Publish your extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) on the VS Code extension marketplace.
-* Automate builds by setting up [Continuous Integration](https://code.visualstudio.com/api/working-with-extensions/continuous-integration).
+* Automate builds by setting up [Continuous Integration](https://code.visualstudio.com/api/working-with-extensions/continuous-integration). -->

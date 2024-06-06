@@ -1,0 +1,8 @@
+{
+    "iconDefinitions": {
+        "_nds": "images/cartridge.svg"
+    },
+    "fileExtensions": {
+        "nds": "_nds"
+    }
+}
