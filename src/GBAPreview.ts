@@ -6,7 +6,7 @@ import { Disposable } from './disposable';
 
 type PreviewState = 'Disposed' | 'Visible' | 'Active';
 
-export class NDSPreview extends Disposable {
+export class GBAPreview extends Disposable {
     private _previewState: PreviewState = 'Visible';
 
     constructor(
@@ -89,44 +89,57 @@ export class NDSPreview extends Disposable {
         };
 
         const html = `
-            <html>
-                <head>
-                    <title>NDS Embed</title>
-                </head>
+            <canvas></canvas>
 
-                <body>
-                    <desmond-player id="player"></desmond-player>
-                    <script src="${resolveAsUri('lib', 'desmond.min.js')}"></script>
+            <div class="loading">loading...</div>
 
-                    <script>
-                        var player = document.querySelector('desmond-player');
 
-                        addEventListener('load', () => {
-                            try {
-                                player.loadURL("${docPath.toString()}")
-                            } catch (e) {
-                                console.error(e)
-                                console.log('retrying')
-                                player.loadURL("${docPath.toString()}")
-                            }
+            <script type="module">
+                import mGBA from "${resolveAsUri('js', 'mgba.js')}";
+
+                const $loading = document.querySelector('.loading')
+
+                let loading = ''
+
+                console.log('${resolveAsUri('js', 'mgba.js')}')
+                window.MGBA_WASM_URI = '${resolveAsUri('js', 'mgba.wasm')}'
+
+                fetch('${docPath.toString()}').then((response) => {
+                    window.Module = {
+                        canvas: document.querySelector('canvas')
+                    };
+                    
+                    let gameblob = response.blob().then((blob) => {
+                        $loading.innerHTML = "Loading emulator..";
+                        mGBA(window.Module).then(() => {
+                            window.Module.FS.mkdir("/hh-gba-data");
+                            window.Module.FS.mount(
+                                window.Module.FS.filesystems.IDBFS,
+                                {},
+                                "/hh-gba-data",
+                            );
+
+                            blob.arrayBuffer().then((data) => {
+                                window.Module.FS.writeFile(
+                                    "/hh-gba-data/game.gba",
+                                    new Uint8Array(data),
+                                );
+                                window.Module.loadFile("/hh-gba-data/game.gba");
+                                $loading.innerHTML = "";
+                                window.Module._setVolume(0.1);
+                            });
                         });
+                    });
+                })
+            </script>
 
-                        var style = document.createElement('style')
-                        style.innerHTML = '#player { display: flex; flex-direction: column; max-width: 600px; width: 100%; grid-gap: 10px}'
-                        player.shadowRoot.appendChild(style)
-                    </script>
 
-                    <style>
-                        desmond-player {
-                            image-rendering: pixelated;
-                            width: 100%;
-                            display: flex;
-                            align-items: center;
-                            flex-direction: column;
-                        }
-                    </style>
-                </body>
-            </html>
+            <style>
+                canvas {
+                    width: 100%;
+                    image-rendering: pixelated;
+                }
+            </style>
         `;
 
         return html;

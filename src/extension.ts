@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { NDSCustomProvider } from './NDSProvider';
+import { GBACustomProvider } from './GBAProvider';
 
 
 
@@ -13,6 +14,21 @@ export function activate(context: vscode.ExtensionContext): void {
 		vscode.window.registerCustomEditorProvider(
 			NDSCustomProvider.viewType,
 			provider,
+			{
+				webviewOptions: {
+					enableFindWidget: false, // default
+					retainContextWhenHidden: true,
+				},
+			}
+		)
+	);
+
+
+	const providerGBA = new GBACustomProvider(extensionRoot);
+	context.subscriptions.push(
+		vscode.window.registerCustomEditorProvider(
+			GBACustomProvider.viewType,
+			providerGBA,
 			{
 				webviewOptions: {
 					enableFindWidget: false, // default

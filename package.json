@@ -6,7 +6,7 @@
     "url": "https://github.com/goudreinette/nds-emulator-vscode"
   },
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.89.0"
   },
@@ -23,6 +23,15 @@
         "selector": [
           {
             "filenamePattern": "*.nds"
+          }
+        ]
+      },
+      {
+        "viewType": "nds-emulator-vscode.preview-gba",
+        "displayName": "GBA Emulator",
+        "selector": [
+          {
+            "filenamePattern": "*.gba"
           }
         ]
       }
