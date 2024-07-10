@@ -1,13 +1,14 @@
 {
   "name": "nds-emulator-vscode",
   "displayName": "NDS and GBA emulator for VSCode",
+  "icon": "./icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/goudreinette/nds-emulator-vscode"
   },
   "publisher": "softpack6ix",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "engines": {
     "vscode": "^1.89.0"
   },

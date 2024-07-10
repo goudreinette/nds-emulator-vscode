@@ -4911,6 +4911,14 @@ var mGBA = (function () {
       return _dlopen.apply(null, arguments);
     }
     function _emscripten_set_main_loop_timing(mode, value) {
+      console.log(mode, value);
+      
+      // FIXME 
+      mode = 0;
+      value = 1000/60; // 60fps
+
+      console.log(mode, value);
+      
       Browser.mainLoop.timingMode = mode;
       Browser.mainLoop.timingValue = value;
       if (!Browser.mainLoop.func) {
