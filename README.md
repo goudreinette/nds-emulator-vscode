@@ -3,6 +3,7 @@
 This is a simple NDS Emulator for VSCode. It embeds [desmond](https://github.com/js-emulators/desmond/tree/main), a web-based NDS Emulator based on [DeSmuME](https://desmume.org/), and [mGBA](https://mgba.io/).
 
 ![Screenshot](./images/screenshot.png)
+![Screenshot](./images/screenshot-gba.webp)
 
 
 ## Usage
