@@ -10,6 +10,8 @@ This is a simple Nintendo DS and GameBoy Advance Emulator for VSCode. It embeds 
 Simply open a .nds or .gba file in VSCode. You can drag the tab to different places like any other view.
 The emulator will refresh when the rom changes on the filesystem.
 
+Make sure the tab is selected (a colored outline on top) for the keyboard input to work.
+
 ### Controls for GBA
 | GBA     | PC        |
 |---------|-----------|
