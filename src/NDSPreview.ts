@@ -96,7 +96,7 @@ export class NDSPreview extends Disposable {
 
                 <body>
                     <desmond-player id="player"></desmond-player>
-                    <script src="${resolveAsUri('lib', 'desmond.min.js')}"></script>
+                    <script src="${resolveAsUri('lib', 'desmond.js')}"></script>
 
                     <script>
                         var player = document.querySelector('desmond-player');
@@ -105,6 +105,9 @@ export class NDSPreview extends Disposable {
                             try {
                                 player.loadURL("${docPath.toString()}")
                             } catch (e) {
+                                console.log('error loading!!')
+                                debugger
+                                location.reload()
                                 console.error(e)
                                 console.log('retrying')
                                 player.loadURL("${docPath.toString()}")
